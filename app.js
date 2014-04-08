@@ -1,5 +1,4 @@
 var index=require('./routes/index');
-app.get('/', index.view); //change this route
 
 //dependencies for each module used
 var express = require('express');
@@ -27,7 +26,7 @@ app.use(express.bodyParser()); //add right before routes
 
 
 //routes
-app.get('/', index.view);
+app.get('/', index.view); //change this route
 app.get('/hashtag', function (req, res) {
 	res.render('hashtag');
 })
@@ -52,10 +51,3 @@ ig.tags.info({
 		console.log(data);
 	}
 });
-
-//database schema
-var ImgSchema = new Mongoose.Schema({
-	"image" : {type: String },
-	"hashtag" : {type: String}
-});
-exports.Img = Mongoose.model('Img', ImgSchema);

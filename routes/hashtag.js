@@ -2,6 +2,16 @@ var auth = require('../auth');
 var models = require('../models');
 
 exports.getHashtag = function(req, res) {
+	//test to see if it works
+//	auth.ig.tags.info({
+//		name: 'sushi',
+//		complete: function(data) {
+//			console.log(data);
+//		}
+//		res.render('hashtag');
+//	});
+//}
+//	
 	auth.ig.tags.recent({
 	name: req.body.hashtag,
 	complete: function(data) {
@@ -29,9 +39,9 @@ exports.saveFavorites = function(req, res) {
 		"hashtag": req.body.hashtag,
 		"image": req.body.url
 	});
-
+		//save model in database
 	newImage.save(callbackFunction);
-
+		//callback function that prints out errors and redirects home
 	function callbackFunction(err) {
 		err ? (console.log(err), res.redirect('/')) : res.redirect('/');
 	}
